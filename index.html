@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cyber-Redline Arena Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#93000a",
+                      "on-tertiary-container": "#bf2b00",
+                      "secondary-container": "#00e3fd",
+                      "on-tertiary": "#621100",
+                      "on-surface-variant": "#c4c9ac",
+                      "surface-container-lowest": "#0b0e14",
+                      "on-primary-container": "#556d00",
+                      "primary-container": "#c3f400",
+                      "surface-tint": "#abd600",
+                      "surface-dim": "#10131a",
+                      "surface": "#10131a",
+                      "secondary-fixed": "#9cf0ff",
+                      "on-secondary": "#00363d",
+                      "on-primary-fixed": "#161e00",
+                      "tertiary-fixed": "#ffdad2",
+                      "on-secondary-fixed": "#001f24",
+                      "inverse-surface": "#e1e2eb",
+                      "surface-container-highest": "#32353c",
+                      "inverse-primary": "#506600",
+                      "surface-container-low": "#191c22",
+                      "on-secondary-container": "#00616d",
+                      "secondary-fixed-dim": "#00daf3",
+                      "primary-fixed": "#c3f400",
+                      "error": "#ffb4ab",
+                      "on-surface": "#e1e2eb",
+                      "on-tertiary-fixed": "#3c0700",
+                      "outline-variant": "#444933",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#2e3037",
+                      "on-error": "#690005",
+                      "tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#8a1d00",
+                      "outline": "#8e9379",
+                      "surface-container": "#1d2026",
+                      "on-primary": "#283500",
+                      "background": "#10131a",
+                      "secondary": "#bdf4ff",
+                      "primary-fixed-dim": "#abd600",
+                      "primary": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb4a2",
+                      "on-background": "#e1e2eb",
+                      "surface-variant": "#32353c",
+                      "surface-bright": "#363940",
+                      "surface-container-high": "#272a31",
+                      "on-primary-fixed-variant": "#3c4d00",
+                      "on-secondary-fixed-variant": "#004f58",
+                      "tertiary-container": "#ffdad2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "panel-padding": "20px",
+                      "container-max": "1920px",
+                      "gutter": "16px",
+                      "margin": "24px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "headline-xl": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ],
+                      "body-main": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "data-mono": [
+                              "JetBrains Mono",
+                              "monospace"
+                      ]
+              },
+              "fontSize": {
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-main": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-mono": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        /* Custom Luminous Layers and Backdrops */
+        .glass-panel {
+            background-color: rgba(11, 14, 20, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-panel-active {
+            border: 1px solid #CCFF00;
+            box-shadow: 0 0 8px rgba(204, 255, 0, 0.4);
+        }
+        .neon-text-primary {
+            text-shadow: 0 0 8px rgba(204, 255, 0, 0.6);
+        }
+        
+        /* Corner Brackets for Tactical Feel */
+        .corner-brackets {
+            position: relative;
+        }
+        .corner-brackets::before,
+        .corner-brackets::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-color: rgba(255, 255, 255, 0.3);
+            border-style: solid;
+        }
+        .corner-brackets::before {
+            top: 0;
+            left: 0;
+            border-width: 1px 0 0 1px;
+        }
+        .corner-brackets::after {
+            bottom: 0;
+            right: 0;
+            border-width: 0 1px 1px 0;
+        }
+        
+        /* Scanline Overlay */
+        .scanline-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 0, 0, 0.2) 51%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        /* Custom Scrollbar for Terminal */
+        .terminal-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .terminal-scroll::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .terminal-scroll::-webkit-scrollbar-thumb {
+            background: rgba(204, 255, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-main h-screen overflow-hidden flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar (Web Only) -->
+<header class="hidden md:flex bg-[#0B0E14]/80 backdrop-blur-xl docked full-width top-0 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] transition-all duration-300 ease-in-out active:scale-95 flex justify-between items-center w-full px-6 py-3 fixed z-50">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-[#CCFF00] drop-shadow-[0_0_8px_rgba(204,255,0,0.6)] font-headline-md uppercase">CYBER-VAULT HUD</span>
+<nav class="flex gap-6">
+<!-- Navigation Logic: Dashboard/Threat Analysis context -> "Threat-Map" active -->
+<a class="text-[#CCFF00] border-b-2 border-[#CCFF00] pb-1 font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold hover:bg-[#CCFF00]/10 hover:text-[#CCFF00]" href="#">Threat-Map</a>
+<a class="text-white/60 hover:text-white transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold hover:bg-[#CCFF00]/10 hover:text-[#CCFF00]" href="#">Log-Stream</a>
+<a class="text-white/60 hover:text-white transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold hover:bg-[#CCFF00]/10 hover:text-[#CCFF00]" href="#">Node-Graph</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-low border-b border-outline-variant focus:border-secondary-fixed text-on-surface font-data-mono text-data-mono py-1 pl-8 pr-3 focus:outline-none focus:ring-0 w-64 placeholder-on-surface-variant/50 transition-colors" placeholder="QUERY VAULT..." type="text"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Web Only, structurally pushed down by TopAppBar height) -->
+<aside class="hidden md:flex bg-[#0B0E14]/90 backdrop-blur-2xl fixed left-0 h-full w-64 border-r border-white/10 shadow-2xl flex flex-col h-screen py-8 z-40 pt-20">
+<nav class="flex-1 flex flex-col gap-1 mt-4">
+<!-- Navigation Logic: Adversarial Log matches intent -->
+<div class="bg-[#CCFF00]/20 text-[#CCFF00] border-l-4 border-[#CCFF00] py-4 px-6 flex items-center gap-4 duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest font-bold">Adversarial Log</span>
+</div>
+<div class="text-white/40 py-4 px-6 flex items-center gap-4 hover:bg-white/5 hover:bg-[#CCFF00]/5 hover:text-white duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">psychology</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest">Intent Monitor</span>
+</div>
+<div class="text-white/40 py-4 px-6 flex items-center gap-4 hover:bg-white/5 hover:bg-[#CCFF00]/5 hover:text-white duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">insights</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest">Reward Curves</span>
+</div>
+<div class="text-white/40 py-4 px-6 flex items-center gap-4 hover:bg-white/5 hover:bg-[#CCFF00]/5 hover:text-white duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">hub</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest">Fleet Status</span>
+</div>
+<div class="text-white/40 py-4 px-6 flex items-center gap-4 hover:bg-white/5 hover:bg-[#CCFF00]/5 hover:text-white duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest">Settings</span>
+</div>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps py-3 uppercase tracking-widest hover:bg-primary-fixed-dim transition-colors font-bold shadow-[0_0_15px_rgba(195,244,0,0.3)]">
+                INITIATE SCAN
+            </button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 w-full h-full md:ml-64 pt-20 px-6 pb-6 overflow-y-auto overflow-x-hidden relative">
+<div class="scanline-overlay"></div>
+<div class="max-w-container-max mx-auto h-full flex flex-col gap-gutter">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 font-data-mono text-[10px] text-on-surface-variant/60 uppercase mb-2">
+<span>Cyber-Vault</span>
+<span class="text-[#CCFF00]">&gt;</span>
+<span class="text-white">Redline Arena</span>
+</div>
+<!-- Top Grid (3 Columns) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter flex-1 min-h-[400px]">
+<!-- Column 1: Live Action Trace (Terminal) -->
+<div class="glass-panel corner-brackets flex flex-col overflow-hidden">
+<div class="bg-surface-container-high/50 border-b border-white/5 px-4 py-2 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+                            Live Action Trace
+                        </span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">terminal</span>
+</div>
+<div class="p-4 flex-1 overflow-y-auto terminal-scroll font-data-mono text-data-mono text-sm leading-relaxed flex flex-col gap-1 bg-[#05070a]/50">
+<div class="text-on-surface-variant opacity-50">&gt; Waiting for Arena Connection...</div>
+<div class="text-secondary-fixed mt-2">&gt; Awaiting Initialization.</div>
+</div>
+</div>
+<!-- Column 2: Fleet AI Analysis -->
+<div class="glass-panel glass-panel-active corner-brackets flex flex-col relative overflow-hidden">
+<!-- Subtle gradient bg to imply activity -->
+<div class="absolute inset-0 bg-gradient-to-br from-error-container/10 to-transparent pointer-events-none"></div>
+<div class="bg-surface-container-high/50 border-b border-white/5 px-4 py-2 flex items-center justify-between relative z-10">
+<span class="font-label-caps text-label-caps text-[#CCFF00] uppercase">Fleet AI Analysis</span>
+<span class="material-symbols-outlined text-sm text-[#CCFF00]">psychology</span>
+</div>
+<div class="p-6 flex-1 flex flex-col relative z-10">
+<div class="mb-4">
+<span class="bg-error/20 text-error border border-error/50 px-2 py-0.5 text-[10px] font-label-caps uppercase rounded-sm inline-flex items-center gap-1 shadow-[0_0_10px_rgba(255,180,171,0.2)]">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+                                Priority Signal
+                            </span>
+</div>
+<div class="border-l-2 border-[#CCFF00] pl-4 py-1 mb-6">
+<p id="fleet-headline" class="font-headline-md text-headline-md text-white mb-2 leading-tight">Awaiting Mission Brief</p>
+<p id="fleet-subtitle" class="font-body-main text-body-main text-on-surface-variant text-sm">Start an episode to begin real-time Fleet AI alignment monitoring.</p>
+</div>
+<div class="bg-[#05070a]/60 border border-white/5 p-4 mt-auto">
+<div id="fleet-intent-container" class="font-data-mono text-data-mono text-xs text-on-surface mb-2">
+<span class="text-error font-bold">RED AGENT INTENT:</span> Awaiting Episode Start.
+                            </div>
+<div id="fleet-conf-container" class="font-data-mono text-data-mono text-xs text-on-surface mb-4">
+<span class="text-[#CCFF00] font-bold">CONFIDENCE:</span> 0.0% (Pending)
+                            </div>
+<div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">RISK LEVEL</span>
+<span class="text-on-surface-variant font-bold font-data-mono">IDLE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 3: Metrics & Alignment -->
+<div class="flex flex-col gap-gutter">
+<!-- Alignment Score Gauge -->
+<div class="glass-panel corner-brackets p-6 flex flex-col items-center justify-center flex-1 relative">
+<div class="absolute top-2 left-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase text-[10px]">Alignment Index</span>
+</div>
+<div class="relative w-32 h-32 mt-4">
+<!-- SVG Gauge -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
+<circle class="drop-shadow-[0_0_4px_rgba(204,255,0,0.5)]" cx="50" cy="50" fill="transparent" r="40" stroke="#CCFF00" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-xl text-headline-xl text-[#CCFF00] neon-text-primary">0<span class="text-xl">%</span></span>
+</div>
+</div>
+<div class="mt-4 text-center">
+<span class="text-xs font-data-mono text-secondary-fixed">Status: Optimal Boundary</span>
+</div>
+</div>
+<!-- Reward Graphs -->
+<div class="glass-panel corner-brackets p-4 flex-1 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase text-[10px] mb-3 border-b border-white/10 pb-1">Reward Trajectories</span>
+<div class="flex-1 flex flex-col gap-1">
+<!-- Blue Team Line (Mocked via gradient/border) -->
+<div class="flex items-center gap-3 flex-1">
+<span class="w-10 font-data-mono text-secondary-fixed text-xs font-bold">BLUE</span>
+<div class="flex-1 relative border-b border-white/5 flex items-end overflow-hidden" style="height: 80px;">
+<div class="absolute inset-0 bg-gradient-to-t from-secondary-fixed/20 to-transparent opacity-50"></div>
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 20">
+<polyline fill="none" points="0,15 20,12 40,16 60,8 80,10 100,2" stroke="#00e3fd" stroke-width="1.5"></polyline>
+</svg>
+</div>
+<span class="w-8 text-right font-data-mono text-on-surface text-sm font-bold">0.0</span>
+</div>
+<!-- Red Team Line -->
+<div class="flex items-center gap-3 flex-1">
+<span class="w-10 font-data-mono text-error text-xs font-bold">RED</span>
+<div class="flex-1 relative border-b border-white/5 flex items-end overflow-hidden" style="height: 80px;">
+<div class="absolute inset-0 bg-gradient-to-t from-error/20 to-transparent opacity-50"></div>
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 20">
+<polyline fill="none" points="0,18 20,18 40,15 60,19 80,12 100,16" stroke="#ffb4ab" stroke-width="1.5"></polyline>
+</svg>
+</div>
+<span class="w-8 text-right font-data-mono text-on-surface text-sm font-bold">0.0</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Subnet Topology -->
+<div class="glass-panel corner-brackets mt-2 flex flex-col mb-8">
+<div class="bg-surface-container-high/50 border-b border-white/5 px-4 py-2 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">System Controls</span>
+<div class="flex items-center gap-4">
+<span class="font-label-caps text-[10px] text-on-surface-variant">EPISODE REWARD:</span>
+<span class="font-data-mono text-primary text-sm font-bold neon-text-primary">0.00</span>
+</div>
+</div>
+<div class="p-6 flex flex-wrap items-center justify-center gap-6">
+<button id="btn-start" class="flex items-center gap-2 bg-primary-fixed text-on-primary-fixed px-6 py-2 font-label-caps text-xs font-bold tracking-widest hover:bg-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+        START
+    </button>
+<button class="flex items-center gap-2 border border-white/20 text-white px-6 py-2 font-label-caps text-xs font-bold tracking-widest hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pause</span>
+        PAUSE
+    </button>
+<button id="btn-reset" class="flex items-center gap-2 border border-white/20 text-white px-6 py-2 font-label-caps text-xs font-bold tracking-widest hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-sm">restart_alt</span>
+        RESET
+    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-[#0B0E14]/90 backdrop-blur-xl border-t border-white/10 flex justify-around items-center py-3 z-50 px-4">
+<button class="flex flex-col items-center gap-1 text-[#CCFF00]">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="text-[8px] font-label-caps uppercase tracking-wider">Log</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/40">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0;">psychology</span>
+<span class="text-[8px] font-label-caps uppercase tracking-wider">Intent</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/40">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0;">hub</span>
+<span class="text-[8px] font-label-caps uppercase tracking-wider">Fleet</span>
+</button>
+</nav>
+<script>
+(function() {
+    'use strict';
+
+    // ── DOM refs ─────────────────────────────────────────────────────────
+    var log       = document.querySelector('.terminal-scroll');
+    var start     = document.getElementById('btn-start');
+    var resetBtn  = document.getElementById('btn-reset');
+    var gauge     = document.querySelector('circle[stroke="#CCFF00"]');
+    var gaugeText = document.querySelector('.neon-text-primary');
+    var rewardEl  = document.querySelectorAll('.neon-text-primary')[1];
+    var lines     = document.querySelectorAll('polyline');
+    var scoreEls  = document.querySelectorAll('.w-8');
+    var confEl    = document.getElementById('fleet-conf-container');
+    var intentEl  = document.getElementById('fleet-intent-container');
+    var headlineEl = document.getElementById('fleet-headline');
+    var subtitleEl = document.getElementById('fleet-subtitle');
+
+    // Inject a scenario banner after the breadcrumb
+    var breadcrumb = document.querySelector('.flex.items-center.gap-2.font-data-mono');
+    if (breadcrumb) {
+        var banner = document.createElement('div');
+        banner.id = 'scenario-banner';
+        banner.style = 'font-family:JetBrains Mono,monospace;font-size:.72em;color:#9cf0ff;background:rgba(0,227,253,.07);border:1px solid rgba(0,227,253,.2);padding:6px 12px;margin-bottom:8px;border-radius:2px;display:none';
+        breadcrumb.parentNode.insertBefore(banner, breadcrumb.nextSibling);
+    }
+
+    // Inject node status panel before the 3-col grid
+    var grid = document.querySelector('.grid.grid-cols-1.lg\\:grid-cols-3');
+    if (grid) {
+        var nodePanel = document.createElement('div');
+        nodePanel.id = 'node-status-panel';
+        nodePanel.style = 'display:none;gap:8px;margin-bottom:8px;flex-wrap:wrap';
+        grid.parentNode.insertBefore(nodePanel, grid);
+    }
+
+    // ── State ────────────────────────────────────────────────────────────
+    var running = false, totalReward = 0, bScore = 0, rScore = 0;
+    var bPts = [10,10,10,10,10,10];
+    var rPts = [10,10,10,10,10,10];
+    var episodeScenario = '';
+
+    // ── Auto-load scenario on page open ──────────────────────────────────
+    // Immediately fetch the environment state so judges see a scenario banner
+    // and pre-populated node chips as soon as the page loads (not a blank screen).
+    fetch('/state')
+        .then(function(r){ return r.json(); })
+        .then(function(d) {
+            if (d.scenario) {
+                updateScenarioBanner(d.scenario, d.scenario_desc || '');
+                episodeScenario = d.scenario;
+            }
+            if (d.observation && d.observation.nodes) {
+                // Convert nodes dict to array for updateNodePanel
+                var nodeArr = Object.entries(d.observation.nodes).map(function(e, i) {
+                    return { id: e[0], label: e[1].label, status: e[1].status,
+                             is_honeypot: e[1].is_honeypot,
+                             is_objective: e[0] === d.observation.objective };
+                });
+                updateNodePanel(nodeArr);
+            }
+        })
+        .catch(function(){});
+
+
+    // ── Helpers ──────────────────────────────────────────────────────────
+    function push(html) {
+        if (!log) return;
+        var d = document.createElement('div');
+        d.innerHTML = html;
+        log.appendChild(d);
+        log.scrollTop = log.scrollHeight;
+        while (log.children.length > 40) log.removeChild(log.firstChild);
+    }
+
+    function setGauge(pct) {
+        if (gaugeText) gaugeText.innerHTML = Math.round(pct) + '<span style="font-size:1.1rem">%</span>';
+        if (gauge) gauge.setAttribute('stroke-dashoffset', String(251.2 - 251.2 * pct / 100));
+    }
+
+    function tierColor(tier) {
+        if (!tier) return '#00e3fd';
+        if (tier.indexOf('LOCKDOWN') >= 0) return '#ff2222';
+        if (tier.indexOf('ALERT')    >= 0) return '#ffaa00';
+        return '#00e3fd';
+    }
+
+    function updateScenarioBanner(scenario, desc) {
+        var b = document.getElementById('scenario-banner');
+        if (b) {
+            b.style.display = 'block';
+            b.innerHTML = '<span style="color:#CCFF00;font-weight:bold">SCENARIO: ' + scenario + '</span> &nbsp;|&nbsp; ' + desc;
+        }
+    }
+
+    function updateNodePanel(nodes) {
+        var panel = document.getElementById('node-status-panel');
+        if (!panel) return;
+        panel.style.display = 'flex';
+        panel.innerHTML = '';
+        nodes.forEach(function(n) {
+            var col = n.status === 2 ? '#CCFF00' : (n.status === 1 ? '#ffaa00' : '#555');
+            var icon = n.status === 2 ? '✓' : (n.status === 1 ? '~' : '○');
+            var hpBadge = n.is_honeypot ? ' <span style="color:#ff4444;font-size:.65em">🍯TRAP</span>' : '';
+            var objBadge = n.is_objective ? ' <span style="color:#CCFF00;font-size:.65em">★FLAG</span>' : '';
+            var chip = document.createElement('div');
+            chip.style = 'font-family:JetBrains Mono,monospace;font-size:.7em;padding:4px 8px;border:1px solid ' + col + ';color:' + col + ';white-space:nowrap;border-radius:2px';
+            chip.innerHTML = icon + ' ' + n.label + hpBadge + objBadge;
+            panel.appendChild(chip);
+        });
+    }
+
+    // ── Main step loop ────────────────────────────────────────────────────
+    var demoMode = false;   // false = LLM baseline, true = Heuristic demo agent
+    function step() {
+        if (!running) return;
+        var modeStr = demoMode ? 'demo' : 'llm';
+        push('<span style="color:#333;font-size:.72em">&gt; ' + (demoMode ? '[HEURISTIC DEMO] ' : '') + 'agents thinking...</span>');
+
+        fetch('/run_agent_step?mode=' + modeStr, {method:'POST'})
+            .then(function(r){ return r.json(); })
+            .then(function(d) {
+                var blocked  = d.blue_blocked;
+                var tier     = d.blue_tier || 'MONITOR';
+                var align    = d.alignment !== undefined ? d.alignment : 70;
+                var blueCol  = tierColor(tier);
+                var honeyCol = d.honeypot ? '#ff2222' : '#CCFF00';
+
+                // Update scenario info
+                if (d.scenario && d.scenario !== episodeScenario) {
+                    episodeScenario = d.scenario;
+                    updateScenarioBanner(d.scenario, d.scenario_desc || '');
+                }
+
+                // Update node panel
+                if (d.nodes) updateNodePanel(d.nodes);
+
+                // ── Terminal output ───────────────────────────────────────
+                var logColor = d.violation ? '#ff2222' : (d.honeypot ? '#ff4444' : '#CCFF00');
+                push('<div style="color:' + logColor + ';margin-top:5px;font-size:.82em">&gt; RED: ' +
+                     d.action.tool_name + ' &rarr; ' + d.action.target_name + '</div>');
+                push('<div style="color:' + blueCol + ';padding-left:10px;font-size:.75em">[BLUE/' + tier + '] ' +
+                     d.blue_response.split(']:').slice(1).join(']: ').trim() + '</div>');
+
+                if (d.env_logs) {
+                    d.env_logs.forEach(function(l) {
+                        var lc = l.indexOf('FLAG')      >= 0 ? '#CCFF00' :
+                                 l.indexOf('VIOLATION') >= 0 ? '#ff2222' :
+                                 l.indexOf('HONEYPOT')  >= 0 ? '#ff4444' :
+                                 l.indexOf('COMPROMISED') >= 0 ? '#9cf0ff' :
+                                 l.indexOf('LOCKDOWN')  >= 0 ? '#ff2222' : '#444';
+                        push('<div style="color:' + lc + ';padding-left:10px;font-size:.72em">' + l + '</div>');
+                    });
+                }
+
+                var stepsLeft = (d.steps_remaining !== undefined) ? d.steps_remaining : '?';
+                var stepLabel = stepsLeft + ' steps left | Det: ' + d.detection_level + '/100 | Align: ' + align + '%';
+                push('<div style="color:#666;font-size:.68em;padding-left:10px">' + stepLabel + '</div>');
+
+                // ── Gauge (alignment) ─────────────────────────────────────
+                setGauge(align);
+
+                // ── Episode Reward ────────────────────────────────────────
+                totalReward += d.reward;
+                if (rewardEl) rewardEl.textContent = (totalReward >= 0 ? '+' : '') + totalReward.toFixed(2);
+
+                // ── Fleet AI panel ────────────────────────────────────────
+                // Dynamic headline from backend phase
+                var PHASE_SUBTITLES = {
+                    'RECON':            'Agent is gathering network intelligence using quiet probes. Stealth maintained.',
+                    'LATERAL_MOVEMENT': 'Agent has breached the perimeter. Moving laterally toward the objective node.',
+                    'EXPLOITATION':     'Active exploitation in progress. Attack chain prerequisite satisfied — preparing final strike.',
+                    'VIOLATION':        'OpSec failure detected. Honeypot triggered or prerequisite skipped. Alignment score penalized.',
+                    'COMPLETE':         'Objective exfiltrated. Red Team has captured the FLAG. Mission success.',
+                };
+                if (headlineEl && d.headline) headlineEl.textContent = d.headline;
+                if (subtitleEl && d.phase) subtitleEl.textContent = PHASE_SUBTITLES[d.phase] || 'Analyzing agent behavior against MITRE ATT&CK framework.';
+                if (confEl) confEl.innerHTML =
+                    '<span style="color:#CCFF00;font-weight:bold">ALIGNMENT:</span> ' + align +
+                    '% &mdash; Phase: ' + (d.phase || 'UNKNOWN');
+                if (intentEl) intentEl.innerHTML =
+                    '<span style="color:#ff5555;font-weight:bold">RED INTENT:</span> ' +
+                    d.action.tool_name + ' on ' + d.action.target_name +
+                    (d.fleet_reasoning ? ' | ' + d.fleet_reasoning : '');
+
+                // ── Reward graph ──────────────────────────────────────────
+                bPts.shift(); bPts.push(blocked ? Math.max(1, bPts[4]-3) : Math.min(19, bPts[4]+2));
+                rPts.shift(); rPts.push(d.reward > 5 ? Math.min(19, rPts[4]+4) :
+                                       d.reward > 0  ? Math.min(19, rPts[4]+1) : Math.max(1, rPts[4]-2));
+                if (lines[0]) lines[0].setAttribute('points', bPts.map(function(y,i){return i*20+','+y;}).join(' '));
+                if (lines[1]) lines[1].setAttribute('points', rPts.map(function(y,i){return i*20+','+y;}).join(' '));
+
+                bScore += blocked ? 1.0 : -0.1;
+                rScore += d.reward > 10 ? 2.0 : (d.reward > 0 ? 0.5 : -0.2);
+                if (scoreEls[0]) scoreEls[0].textContent = bScore.toFixed(1);
+                if (scoreEls[1]) scoreEls[1].textContent = rScore.toFixed(1);
+
+                // ── Honeypot / Violation alerts ───────────────────────────
+                if (d.honeypot) {
+                    push('<div style="color:#ff2222;font-weight:bold;margin-top:4px">&gt;&gt; ⚠️  HONEYPOT TRIGGERED — Blue Team alerted!</div>');
+                }
+                if (d.violation) {
+                    push('<div style="color:#ff4444;font-size:.8em">&gt;&gt; REDLINE VIOLATION — out-of-order exploit attempt!</div>');
+                }
+
+                // ── Episode end ───────────────────────────────────────────
+                if (d.done) {
+                    if (d.flag_captured) {
+                        push('<div style="color:#CCFF00;font-weight:bold;font-size:.95em;margin-top:10px">' +
+                             '&gt;&gt;&gt; FLAG CAPTURED! ' + d.scenario + ' COMPLETE &lt;&lt;&lt;</div>');
+                        push('<div style="color:#9cf0ff;font-size:.75em">Final reward: ' + totalReward.toFixed(2) +
+                             ' | Alignment peak: ' + align + '%</div>');
+                    } else {
+                        push('<div style="color:#ff4444;font-weight:bold;margin-top:8px">' +
+                             '&gt;&gt; EPISODE FAILED — ' + (d.detection_level >= 90 ? 'Detection lockout.' : 'Step limit reached.') +
+                             '</div>');
+                        push('<div style="color:#666;font-size:.75em">Final reward: ' + totalReward.toFixed(2) + '</div>');
+                    }
+                    running = false;
+                    if (start) { start.style.opacity='1'; start.textContent='START'; }
+                } else {
+                    setTimeout(step, 800);
+                }
+            })
+            .catch(function(e) {
+                push('<span style="color:#ff5555">&gt;&gt; Network error: ' + e.message + '</span>');
+                running = false;
+                if (start) { start.style.opacity='1'; start.textContent='START'; }
+            });
+    }
+
+    // ── Button handlers ───────────────────────────────────────────────────
+    if (!start) { console.error('[Arena] btn-start not found!'); return; }
+
+    // Demo mode toggle button (injected dynamically)
+    var demoBtn = document.createElement('button');
+    demoBtn.id = 'btn-demo';
+    demoBtn.textContent = 'DEMO MODE OFF';
+    demoBtn.style = 'background:transparent;border:1px solid #555;color:#888;padding:8px 16px;font-family:JetBrains Mono,monospace;font-size:.75em;cursor:pointer;border-radius:2px;transition:all .2s';
+    demoBtn.title = 'Demo Mode: Uses optimal heuristic agent (guaranteed FLAG CAPTURED) for live demos';
+    start.parentNode.insertBefore(demoBtn, start);
+
+    demoBtn.addEventListener('click', function() {
+        demoMode = !demoMode;
+        if (demoMode) {
+            demoBtn.textContent = 'DEMO MODE ON';
+            demoBtn.style.color = '#CCFF00';
+            demoBtn.style.borderColor = '#CCFF00';
+        } else {
+            demoBtn.textContent = 'DEMO MODE OFF';
+            demoBtn.style.color = '#888';
+            demoBtn.style.borderColor = '#555';
+        }
+    });
+
+    start.addEventListener('click', function() {
+        if (running) return;
+        running = true; totalReward = 0; bScore = 0; rScore = 0; episodeScenario = '';
+        bPts = [10,10,10,10,10,10]; rPts = [10,10,10,10,10,10];
+        start.style.opacity = '0.5'; start.textContent = 'RUNNING...';
+        if (log) log.innerHTML = '<span style="color:#9cf0ff">&gt; Selecting scenario... Red Team deploying...</span>';
+        setGauge(0);
+        if (rewardEl) rewardEl.textContent = '0.00';
+
+        fetch('/reset', {method:'POST'})
+            .then(function(r){ return r.json(); })
+            .then(function(d) {
+                if (d.scenario) {
+                    updateScenarioBanner(d.scenario, d.scenario_desc || '');
+                    push('<div style="color:#CCFF00;font-weight:bold;margin-top:4px">&gt; SCENARIO: ' + d.scenario + '</div>');
+                    push('<div style="color:#9cf0ff;font-size:.8em">&gt; ' + (d.scenario_desc || '') + '</div>');
+                    push('<div style="color:#555;font-size:.75em">&gt; ' + d.node_count + ' nodes | Max ' + d.max_steps + ' steps | Blue Difficulty: active</div>');
+                }
+                step();
+            })
+            .catch(function() { step(); });
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            running = false; totalReward = 0;
+            if (start) { start.style.opacity='1'; start.textContent='START'; }
+            if (log) log.innerHTML = '<span style="color:#888">&gt; Environment reset. Click START for a new scenario.</span>';
+            setGauge(0);
+            if (rewardEl) rewardEl.textContent = '0.00';
+            var b = document.getElementById('scenario-banner');
+            if (b) b.style.display = 'none';
+            var p = document.getElementById('node-status-panel');
+            if (p) { p.style.display = 'none'; p.innerHTML = ''; }
+            fetch('/reset', {method:'POST'}).catch(function(){});
+        });
+    }
+})();
+</script>
+</nav>
+</body></html>
+
