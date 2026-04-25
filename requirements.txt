@@ -1,4 +1,13 @@
 fastapi
 uvicorn
-gym
+gymnasium
 pydantic
+torch
+transformers
+trl>=1.2.0
+accelerate
+peft
+bitsandbytes
+datasets
+wandb
+unsloth

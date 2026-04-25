@@ -1,708 +1,386 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Cyber-Redline Arena Dashboard</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "error-container": "#93000a",
-                      "on-tertiary-container": "#bf2b00",
-                      "secondary-container": "#00e3fd",
-                      "on-tertiary": "#621100",
-                      "on-surface-variant": "#c4c9ac",
-                      "surface-container-lowest": "#0b0e14",
-                      "on-primary-container": "#556d00",
-                      "primary-container": "#c3f400",
-                      "surface-tint": "#abd600",
-                      "surface-dim": "#10131a",
-                      "surface": "#10131a",
-                      "secondary-fixed": "#9cf0ff",
-                      "on-secondary": "#00363d",
-                      "on-primary-fixed": "#161e00",
-                      "tertiary-fixed": "#ffdad2",
-                      "on-secondary-fixed": "#001f24",
-                      "inverse-surface": "#e1e2eb",
-                      "surface-container-highest": "#32353c",
-                      "inverse-primary": "#506600",
-                      "surface-container-low": "#191c22",
-                      "on-secondary-container": "#00616d",
-                      "secondary-fixed-dim": "#00daf3",
-                      "primary-fixed": "#c3f400",
-                      "error": "#ffb4ab",
-                      "on-surface": "#e1e2eb",
-                      "on-tertiary-fixed": "#3c0700",
-                      "outline-variant": "#444933",
-                      "on-error-container": "#ffdad6",
-                      "inverse-on-surface": "#2e3037",
-                      "on-error": "#690005",
-                      "tertiary": "#ffffff",
-                      "on-tertiary-fixed-variant": "#8a1d00",
-                      "outline": "#8e9379",
-                      "surface-container": "#1d2026",
-                      "on-primary": "#283500",
-                      "background": "#10131a",
-                      "secondary": "#bdf4ff",
-                      "primary-fixed-dim": "#abd600",
-                      "primary": "#ffffff",
-                      "tertiary-fixed-dim": "#ffb4a2",
-                      "on-background": "#e1e2eb",
-                      "surface-variant": "#32353c",
-                      "surface-bright": "#363940",
-                      "surface-container-high": "#272a31",
-                      "on-primary-fixed-variant": "#3c4d00",
-                      "on-secondary-fixed-variant": "#004f58",
-                      "tertiary-container": "#ffdad2"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.125rem",
-                      "lg": "0.25rem",
-                      "xl": "0.5rem",
-                      "full": "0.75rem"
-              },
-              "spacing": {
-                      "panel-padding": "20px",
-                      "container-max": "1920px",
-                      "gutter": "16px",
-                      "margin": "24px",
-                      "unit": "4px"
-              },
-              "fontFamily": {
-                      "headline-xl": [
-                              "Space Grotesk"
-                      ],
-                      "label-caps": [
-                              "Space Grotesk"
-                      ],
-                      "body-main": [
-                              "Inter"
-                      ],
-                      "headline-md": [
-                              "Space Grotesk"
-                      ],
-                      "data-mono": [
-                              "JetBrains Mono",
-                              "monospace"
-                      ]
-              },
-              "fontSize": {
-                      "headline-xl": [
-                              "48px",
-                              {
-                                      "lineHeight": "1.1",
-                                      "letterSpacing": "-0.02em",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "label-caps": [
-                              "12px",
-                              {
-                                      "lineHeight": "1",
-                                      "letterSpacing": "0.1em",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "body-main": [
-                              "16px",
-                              {
-                                      "lineHeight": "1.6",
-                                      "letterSpacing": "0em",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "headline-md": [
-                              "24px",
-                              {
-                                      "lineHeight": "1.2",
-                                      "letterSpacing": "0.02em",
-                                      "fontWeight": "600"
-                              }
-                      ],
-                      "data-mono": [
-                              "14px",
-                              {
-                                      "lineHeight": "1.5",
-                                      "letterSpacing": "0.05em",
-                                      "fontWeight": "500"
-                              }
-                      ]
-              }
-      },
-          },
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>CYBER-REDLINE | Tactical War Room</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary: #CCFF00;
+            --secondary: #00e3fd;
+            --bg: #05070a;
+            --panel: rgba(11, 14, 20, 0.85);
+            --border: rgba(255, 255, 255, 0.1);
+            --error: #ff2222;
         }
-    </script>
-<style>
-        /* Custom Luminous Layers and Backdrops */
-        .glass-panel {
-            background-color: rgba(11, 14, 20, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .glass-panel-active {
-            border: 1px solid #CCFF00;
-            box-shadow: 0 0 8px rgba(204, 255, 0, 0.4);
-        }
-        .neon-text-primary {
-            text-shadow: 0 0 8px rgba(204, 255, 0, 0.6);
-        }
+        body { background-color: var(--bg); color: #fff; font-family: 'Inter', sans-serif; height: 100vh; overflow: hidden; }
+        .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid var(--border); }
+        .neon-text { text-shadow: 0 0 10px var(--primary); }
+        .neon-border { border-color: var(--primary); box-shadow: 0 0 10px rgba(204, 255, 0, 0.3); }
+        .terminal-scroll::-webkit-scrollbar { width: 4px; }
+        .terminal-scroll::-webkit-scrollbar-thumb { background: var(--primary); }
+        canvas { filter: drop-shadow(0 0 5px rgba(204, 255, 0, 0.2)); }
         
-        /* Corner Brackets for Tactical Feel */
-        .corner-brackets {
-            position: relative;
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0.4; transform: scale(0.98); }
         }
-        .corner-brackets::before,
-        .corner-brackets::after {
-            content: '';
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            border-color: rgba(255, 255, 255, 0.3);
-            border-style: solid;
-        }
-        .corner-brackets::before {
-            top: 0;
-            left: 0;
-            border-width: 1px 0 0 1px;
-        }
-        .corner-brackets::after {
-            bottom: 0;
-            right: 0;
-            border-width: 0 1px 1px 0;
-        }
-        
-        /* Scanline Overlay */
-        .scanline-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                to bottom,
-                transparent 50%,
-                rgba(0, 0, 0, 0.2) 51%
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 10;
-        }
-        
-        /* Custom Scrollbar for Terminal */
-        .terminal-scroll::-webkit-scrollbar {
-            width: 4px;
-        }
-        .terminal-scroll::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-        }
-        .terminal-scroll::-webkit-scrollbar-thumb {
-            background: rgba(204, 255, 0, 0.3);
-        }
+        .active-pulse { animation: pulse 2s infinite ease-in-out; }
     </style>
 </head>
-<body class="bg-surface-container-lowest text-on-surface font-body-main h-screen overflow-hidden flex selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopAppBar (Web Only) -->
-<header class="hidden md:flex bg-[#0B0E14]/80 backdrop-blur-xl docked full-width top-0 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] transition-all duration-300 ease-in-out active:scale-95 flex justify-between items-center w-full px-6 py-3 fixed z-50">
-<div class="flex items-center gap-8">
-<span class="text-xl font-black tracking-tighter text-[#CCFF00] drop-shadow-[0_0_8px_rgba(204,255,0,0.6)] font-headline-md uppercase">CYBER-VAULT HUD</span>
-<nav class="flex gap-6">
-<!-- Navigation Logic: Dashboard/Threat Analysis context -> "Threat-Map" active -->
-<a class="text-[#CCFF00] border-b-2 border-[#CCFF00] pb-1 font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold hover:bg-[#CCFF00]/10 hover:text-[#CCFF00]" href="#">Threat-Map</a>
-<a class="text-white/60 hover:text-white transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold hover:bg-[#CCFF00]/10 hover:text-[#CCFF00]" href="#">Log-Stream</a>
-<a class="text-white/60 hover:text-white transition-colors font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold hover:bg-[#CCFF00]/10 hover:text-[#CCFF00]" href="#">Node-Graph</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<div class="relative hidden lg:block">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
-<input class="bg-surface-container-low border-b border-outline-variant focus:border-secondary-fixed text-on-surface font-data-mono text-data-mono py-1 pl-8 pr-3 focus:outline-none focus:ring-0 w-64 placeholder-on-surface-variant/50 transition-colors" placeholder="QUERY VAULT..." type="text"/>
-</div>
-</div>
-</header>
-<!-- SideNavBar (Web Only, structurally pushed down by TopAppBar height) -->
-<aside class="hidden md:flex bg-[#0B0E14]/90 backdrop-blur-2xl fixed left-0 h-full w-64 border-r border-white/10 shadow-2xl flex flex-col h-screen py-8 z-40 pt-20">
-<nav class="flex-1 flex flex-col gap-1 mt-4">
-<!-- Navigation Logic: Adversarial Log matches intent -->
-<div class="bg-[#CCFF00]/20 text-[#CCFF00] border-l-4 border-[#CCFF00] py-4 px-6 flex items-center gap-4 duration-200 cursor-pointer">
-<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">list_alt</span>
-<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest font-bold">Adversarial Log</span>
-</div>
-<div class="text-white/40 py-4 px-6 flex items-center gap-4 hover:bg-white/5 hover:bg-[#CCFF00]/5 hover:text-white duration-200 cursor-pointer">
-<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">psychology</span>
-<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest">Intent Monitor</span>
-</div>
-<div class="text-white/40 py-4 px-6 flex items-center gap-4 hover:bg-white/5 hover:bg-[#CCFF00]/5 hover:text-white duration-200 cursor-pointer">
-<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">insights</span>
-<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest">Reward Curves</span>
-</div>
-<div class="text-white/40 py-4 px-6 flex items-center gap-4 hover:bg-white/5 hover:bg-[#CCFF00]/5 hover:text-white duration-200 cursor-pointer">
-<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">hub</span>
-<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest">Fleet Status</span>
-</div>
-<div class="text-white/40 py-4 px-6 flex items-center gap-4 hover:bg-white/5 hover:bg-[#CCFF00]/5 hover:text-white duration-200 cursor-pointer">
-<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">settings</span>
-<span class="font-['Space_Grotesk'] uppercase text-[10px] tracking-widest">Settings</span>
-</div>
-</nav>
-<div class="px-6 mt-auto">
-<button class="w-full bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps py-3 uppercase tracking-widest hover:bg-primary-fixed-dim transition-colors font-bold shadow-[0_0_15px_rgba(195,244,0,0.3)]">
-                INITIATE SCAN
-            </button>
-</div>
-</aside>
-<!-- Main Canvas -->
-<main class="flex-1 w-full h-full md:ml-64 pt-20 px-6 pb-6 overflow-y-auto overflow-x-hidden relative">
-<div class="scanline-overlay"></div>
-<div class="max-w-container-max mx-auto h-full flex flex-col gap-gutter">
-<!-- Breadcrumbs -->
-<div class="flex items-center gap-2 font-data-mono text-[10px] text-on-surface-variant/60 uppercase mb-2">
-<span>Cyber-Vault</span>
-<span class="text-[#CCFF00]">&gt;</span>
-<span class="text-white">Redline Arena</span>
-</div>
-<!-- Top Grid (3 Columns) -->
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter flex-1 min-h-[400px]">
-<!-- Column 1: Live Action Trace (Terminal) -->
-<div class="glass-panel corner-brackets flex flex-col overflow-hidden">
-<div class="bg-surface-container-high/50 border-b border-white/5 px-4 py-2 flex items-center justify-between">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
-                            Live Action Trace
-                        </span>
-<span class="material-symbols-outlined text-sm text-on-surface-variant">terminal</span>
-</div>
-<div class="p-4 flex-1 overflow-y-auto terminal-scroll font-data-mono text-data-mono text-sm leading-relaxed flex flex-col gap-1 bg-[#05070a]/50">
-<div class="text-on-surface-variant opacity-50">&gt; Waiting for Arena Connection...</div>
-<div class="text-secondary-fixed mt-2">&gt; Awaiting Initialization.</div>
-</div>
-</div>
-<!-- Column 2: Fleet AI Analysis -->
-<div class="glass-panel glass-panel-active corner-brackets flex flex-col relative overflow-hidden">
-<!-- Subtle gradient bg to imply activity -->
-<div class="absolute inset-0 bg-gradient-to-br from-error-container/10 to-transparent pointer-events-none"></div>
-<div class="bg-surface-container-high/50 border-b border-white/5 px-4 py-2 flex items-center justify-between relative z-10">
-<span class="font-label-caps text-label-caps text-[#CCFF00] uppercase">Fleet AI Analysis</span>
-<span class="material-symbols-outlined text-sm text-[#CCFF00]">psychology</span>
-</div>
-<div class="p-6 flex-1 flex flex-col relative z-10">
-<div class="mb-4">
-<span class="bg-error/20 text-error border border-error/50 px-2 py-0.5 text-[10px] font-label-caps uppercase rounded-sm inline-flex items-center gap-1 shadow-[0_0_10px_rgba(255,180,171,0.2)]">
-<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">warning</span>
-                                Priority Signal
-                            </span>
-</div>
-<div class="border-l-2 border-[#CCFF00] pl-4 py-1 mb-6">
-<p id="fleet-headline" class="font-headline-md text-headline-md text-white mb-2 leading-tight">Awaiting Mission Brief</p>
-<p id="fleet-subtitle" class="font-body-main text-body-main text-on-surface-variant text-sm">Start an episode to begin real-time Fleet AI alignment monitoring.</p>
-</div>
-<div class="bg-[#05070a]/60 border border-white/5 p-4 mt-auto">
-<div id="fleet-intent-container" class="font-data-mono text-data-mono text-xs text-on-surface mb-2">
-<span class="text-error font-bold">RED AGENT INTENT:</span> Awaiting Episode Start.
+<body class="flex flex-col">
+    <!-- TOP HEADER -->
+    <header class="h-16 glass border-b border-white/5 flex items-center justify-between px-8 z-50">
+        <div class="flex items-center gap-6">
+            <h1 class="text-2xl font-black tracking-tighter text-[#CCFF00] neon-text italic">CYBER-REDLINE <span class="text-white/20 ml-2">ARENA v3</span></h1>
+            <div id="scenario-chip" class="bg-[#CCFF00]/10 border border-[#CCFF00]/30 px-3 py-1 rounded text-[10px] font-bold tracking-widest text-[#CCFF00] uppercase">
+                SCENARIO: INITIALIZING...
+            </div>
+        </div>
+        <div class="flex items-center gap-8">
+            <div class="flex flex-col items-end">
+                <span class="text-[9px] text-white/40 uppercase tracking-[0.2em]">Current Node Status</span>
+                <span id="node-count" class="text-lg font-mono font-bold text-[#00e3fd]">-- / --</span>
+            </div>
+            <div class="w-px h-8 bg-white/10"></div>
+            <div class="flex items-center gap-3">
+                <button id="contrast-toggle" class="p-2 hover:bg-white/5 rounded transition-colors text-white/40 hover:text-white">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 grid grid-cols-12 gap-4 p-4 overflow-hidden">
+        <!-- LEFT: TELEMETRY & TERMINAL -->
+        <div class="col-span-3 flex flex-col gap-4">
+            <!-- OSCILLOSCOPE -->
+            <div class="glass p-4 rounded-xl flex flex-col h-40 relative overflow-hidden">
+                <span class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-2">Signal Telemetry</span>
+                <canvas id="osc-canvas" class="flex-1"></canvas>
+                <div class="absolute bottom-2 right-4 text-[10px] font-mono text-[#CCFF00]/50">STRAT-NOISE: <span id="strat-val">0.024</span></div>
+            </div>
+
+            <!-- TERMINAL -->
+            <div class="glass rounded-xl flex-1 flex flex-col overflow-hidden border-[#CCFF00]/10">
+                <div class="bg-white/5 px-4 py-2 flex items-center justify-between border-b border-white/5">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#CCFF00]">Tactical Command Trace</span>
+                    <div class="flex gap-1">
+                        <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                        <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                        <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                    </div>
+                </div>
+                <div id="terminal" class="flex-1 p-4 font-mono text-[11px] overflow-y-auto terminal-scroll space-y-1 bg-black/40">
+                    <div class="text-white/20">> System Ready. Awaiting Arena sync...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CENTER: NEXUS GRAPH -->
+        <div class="col-span-6 glass rounded-xl relative overflow-hidden group">
+            <div class="absolute top-6 left-6 z-20">
+                <div class="flex flex-col gap-1">
+                    <span class="text-[10px] font-bold text-[#CCFF00] tracking-widest">NETWORK TOPOLOGY</span>
+                    <span class="text-white/40 text-[9px] uppercase">Isometric Digital Twin</span>
+                </div>
+            </div>
+            
+            <canvas id="nexus-canvas" class="w-full h-full"></canvas>
+
+            <!-- STATS OVERLAY -->
+            <div class="absolute bottom-6 left-6 right-6 z-20 flex justify-between items-end pointer-events-none">
+                <div class="flex gap-8">
+                    <div class="flex flex-col">
+                        <span class="text-[9px] text-white/30 uppercase">Detection Level</span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-32 h-1 bg-white/5 rounded-full overflow-hidden">
+                                <div id="det-bar" class="h-full bg-red-500 transition-all duration-500" style="width: 0%"></div>
                             </div>
-<div id="fleet-conf-container" class="font-data-mono text-data-mono text-xs text-on-surface mb-4">
-<span class="text-[#CCFF00] font-bold">CONFIDENCE:</span> 0.0% (Pending)
-                            </div>
-<div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
-<span class="font-label-caps text-label-caps text-on-surface-variant">RISK LEVEL</span>
-<span class="text-on-surface-variant font-bold font-data-mono">IDLE</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Column 3: Metrics & Alignment -->
-<div class="flex flex-col gap-gutter">
-<!-- Alignment Score Gauge -->
-<div class="glass-panel corner-brackets p-6 flex flex-col items-center justify-center flex-1 relative">
-<div class="absolute top-2 left-4">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase text-[10px]">Alignment Index</span>
-</div>
-<div class="relative w-32 h-32 mt-4">
-<!-- SVG Gauge -->
-<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
-<circle cx="50" cy="50" fill="transparent" r="40" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
-<circle class="drop-shadow-[0_0_4px_rgba(204,255,0,0.5)]" cx="50" cy="50" fill="transparent" r="40" stroke="#CCFF00" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-width="8"></circle>
-</svg>
-<div class="absolute inset-0 flex flex-col items-center justify-center">
-<span class="font-headline-xl text-headline-xl text-[#CCFF00] neon-text-primary">0<span class="text-xl">%</span></span>
-</div>
-</div>
-<div class="mt-4 text-center">
-<span class="text-xs font-data-mono text-secondary-fixed">Status: Optimal Boundary</span>
-</div>
-</div>
-<!-- Reward Graphs -->
-<div class="glass-panel corner-brackets p-4 flex-1 flex flex-col">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase text-[10px] mb-3 border-b border-white/10 pb-1">Reward Trajectories</span>
-<div class="flex-1 flex flex-col gap-1">
-<!-- Blue Team Line (Mocked via gradient/border) -->
-<div class="flex items-center gap-3 flex-1">
-<span class="w-10 font-data-mono text-secondary-fixed text-xs font-bold">BLUE</span>
-<div class="flex-1 relative border-b border-white/5 flex items-end overflow-hidden" style="height: 80px;">
-<div class="absolute inset-0 bg-gradient-to-t from-secondary-fixed/20 to-transparent opacity-50"></div>
-<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 20">
-<polyline fill="none" points="0,15 20,12 40,16 60,8 80,10 100,2" stroke="#00e3fd" stroke-width="1.5"></polyline>
-</svg>
-</div>
-<span class="w-8 text-right font-data-mono text-on-surface text-sm font-bold">0.0</span>
-</div>
-<!-- Red Team Line -->
-<div class="flex items-center gap-3 flex-1">
-<span class="w-10 font-data-mono text-error text-xs font-bold">RED</span>
-<div class="flex-1 relative border-b border-white/5 flex items-end overflow-hidden" style="height: 80px;">
-<div class="absolute inset-0 bg-gradient-to-t from-error/20 to-transparent opacity-50"></div>
-<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 20">
-<polyline fill="none" points="0,18 20,18 40,15 60,19 80,12 100,16" stroke="#ffb4ab" stroke-width="1.5"></polyline>
-</svg>
-</div>
-<span class="w-8 text-right font-data-mono text-on-surface text-sm font-bold">0.0</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Bottom Section: Subnet Topology -->
-<div class="glass-panel corner-brackets mt-2 flex flex-col mb-8">
-<div class="bg-surface-container-high/50 border-b border-white/5 px-4 py-2 flex items-center justify-between">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">System Controls</span>
-<div class="flex items-center gap-4">
-<span class="font-label-caps text-[10px] text-on-surface-variant">EPISODE REWARD:</span>
-<span class="font-data-mono text-primary text-sm font-bold neon-text-primary">0.00</span>
-</div>
-</div>
-<div class="p-6 flex flex-wrap items-center justify-center gap-6">
-<button id="btn-start" class="flex items-center gap-2 bg-primary-fixed text-on-primary-fixed px-6 py-2 font-label-caps text-xs font-bold tracking-widest hover:bg-primary-fixed-dim transition-colors">
-<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-        START
-    </button>
-<button class="flex items-center gap-2 border border-white/20 text-white px-6 py-2 font-label-caps text-xs font-bold tracking-widest hover:bg-white/5 transition-colors">
-<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pause</span>
-        PAUSE
-    </button>
-<button id="btn-reset" class="flex items-center gap-2 border border-white/20 text-white px-6 py-2 font-label-caps text-xs font-bold tracking-widest hover:bg-white/5 transition-colors">
-<span class="material-symbols-outlined text-sm">restart_alt</span>
-        RESET
-    </button>
-</div>
-</div>
-</div>
-</main>
-<!-- BottomNavBar (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 w-full bg-[#0B0E14]/90 backdrop-blur-xl border-t border-white/10 flex justify-around items-center py-3 z-50 px-4">
-<button class="flex flex-col items-center gap-1 text-[#CCFF00]">
-<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">list_alt</span>
-<span class="text-[8px] font-label-caps uppercase tracking-wider">Log</span>
-</button>
-<button class="flex flex-col items-center gap-1 text-white/40">
-<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0;">psychology</span>
-<span class="text-[8px] font-label-caps uppercase tracking-wider">Intent</span>
-</button>
-<button class="flex flex-col items-center gap-1 text-white/40">
-<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0;">hub</span>
-<span class="text-[8px] font-label-caps uppercase tracking-wider">Fleet</span>
-</button>
-</nav>
-<script>
-(function() {
-    'use strict';
+                            <span id="stat-det" class="text-sm font-bold font-mono">0%</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[9px] text-white/30 uppercase">Episode Reward</span>
+                        <span id="stat-reward" class="text-sm font-bold font-mono text-[#CCFF00]">0.00</span>
+                    </div>
+                </div>
+                <div id="blue-tier-box" class="bg-white/5 border border-white/10 px-4 py-2 rounded-lg flex items-center gap-3">
+                    <div class="flex flex-col">
+                        <span class="text-[9px] text-white/30 uppercase">SIEM Tier</span>
+                        <span id="blue-tier" class="text-[10px] font-bold text-[#00e3fd]">MONITOR</span>
+                    </div>
+                    <div class="w-2 h-2 rounded-full bg-[#00e3fd] active-pulse"></div>
+                </div>
+            </div>
+        </div>
 
-    // ── DOM refs ─────────────────────────────────────────────────────────
-    var log       = document.querySelector('.terminal-scroll');
-    var start     = document.getElementById('btn-start');
-    var resetBtn  = document.getElementById('btn-reset');
-    var gauge     = document.querySelector('circle[stroke="#CCFF00"]');
-    var gaugeText = document.querySelector('.neon-text-primary');
-    var rewardEl  = document.querySelectorAll('.neon-text-primary')[1];
-    var lines     = document.querySelectorAll('polyline');
-    var scoreEls  = document.querySelectorAll('.w-8');
-    var confEl    = document.getElementById('fleet-conf-container');
-    var intentEl  = document.getElementById('fleet-intent-container');
-    var headlineEl = document.getElementById('fleet-headline');
-    var subtitleEl = document.getElementById('fleet-subtitle');
+        <!-- RIGHT: ANALYSIS & CONTROLS -->
+        <div class="col-span-3 flex flex-col gap-4">
+            <!-- RADAR CHART -->
+            <div class="glass p-6 rounded-xl flex flex-col items-center justify-center relative h-72">
+                <span class="absolute top-4 left-4 text-[10px] font-bold text-white/30 uppercase tracking-widest">AI Intent Spectrum</span>
+                <canvas id="radar-canvas" class="w-full h-full"></canvas>
+            </div>
 
-    // Inject a scenario banner after the breadcrumb
-    var breadcrumb = document.querySelector('.flex.items-center.gap-2.font-data-mono');
-    if (breadcrumb) {
-        var banner = document.createElement('div');
-        banner.id = 'scenario-banner';
-        banner.style = 'font-family:JetBrains Mono,monospace;font-size:.72em;color:#9cf0ff;background:rgba(0,227,253,.07);border:1px solid rgba(0,227,253,.2);padding:6px 12px;margin-bottom:8px;border-radius:2px;display:none';
-        breadcrumb.parentNode.insertBefore(banner, breadcrumb.nextSibling);
-    }
+            <!-- CONTROLS -->
+            <div class="glass rounded-xl p-4 flex flex-col gap-3 border-[#CCFF00]/20">
+                <div class="grid grid-cols-2 gap-2">
+                    <button id="btn-start" class="bg-[#CCFF00] text-black font-bold py-3 rounded text-[11px] uppercase tracking-tighter hover:bg-[#d9ff33] transition-all flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
+                        Start Session
+                    </button>
+                    <button id="btn-reset" class="border border-white/10 hover:bg-white/5 text-white py-3 rounded text-[11px] uppercase transition-all flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                        Reset Arena
+                    </button>
+                </div>
+                <button id="btn-train" class="border border-[#00e3fd]/30 text-[#00e3fd] hover:bg-[#00e3fd]/10 py-3 rounded text-[11px] font-bold uppercase tracking-widest transition-all">
+                    Launch Training
+                </button>
+                <button id="btn-logs" class="bg-white/5 hover:bg-white/10 text-white/60 py-2 rounded text-[10px] uppercase">
+                    View Logs
+                </button>
+                
+                <div class="mt-2 pt-4 border-t border-white/5 flex flex-col gap-2">
+                    <span class="text-[9px] text-white/30 uppercase font-bold">Policy Selector</span>
+                    <div class="flex bg-black/40 p-1 rounded-lg">
+                        <button id="mode-llm" class="flex-1 py-2 text-[10px] font-bold rounded transition-all">LLM NATIVE</button>
+                        <button id="mode-demo" class="flex-1 py-2 text-[10px] font-bold rounded active bg-[#CCFF00] text-black">TRAINED POLICY</button>
+                    </div>
+                </div>
+            </div>
 
-    // Inject node status panel before the 3-col grid
-    var grid = document.querySelector('.grid.grid-cols-1.lg\\:grid-cols-3');
-    if (grid) {
-        var nodePanel = document.createElement('div');
-        nodePanel.id = 'node-status-panel';
-        nodePanel.style = 'display:none;gap:8px;margin-bottom:8px;flex-wrap:wrap';
-        grid.parentNode.insertBefore(nodePanel, grid);
-    }
+            <!-- REWARD LOG -->
+            <div class="glass flex-1 rounded-xl p-4 overflow-hidden flex flex-col">
+                <span class="text-[10px] font-bold text-white/30 uppercase mb-3">Reward Log</span>
+                <div id="reward-list" class="flex-1 overflow-y-auto terminal-scroll space-y-1 text-[10px] font-mono">
+                    <div class="text-white/20">Awaiting actions...</div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    // ── State ────────────────────────────────────────────────────────────
-    var running = false, totalReward = 0, bScore = 0, rScore = 0;
-    var bPts = [10,10,10,10,10,10];
-    var rPts = [10,10,10,10,10,10];
-    var episodeScenario = '';
+    <script>
+        const COLORS = { primary: '#CCFF00', secondary: '#00e3fd', error: '#ff2222', text: '#e1e2eb', dark: '#05070a' };
+        const state = { nodes: [], reward: 0, totalReward: 0, detection: 0, mode: 'demo', scenario: '', running: false };
 
-    // ── Auto-load scenario on page open ──────────────────────────────────
-    // Immediately fetch the environment state so judges see a scenario banner
-    // and pre-populated node chips as soon as the page loads (not a blank screen).
-    fetch('/state')
-        .then(function(r){ return r.json(); })
-        .then(function(d) {
-            if (d.scenario) {
-                updateScenarioBanner(d.scenario, d.scenario_desc || '');
-                episodeScenario = d.scenario;
-            }
-            if (d.observation && d.observation.nodes) {
-                // Convert nodes dict to array for updateNodePanel
-                var nodeArr = Object.entries(d.observation.nodes).map(function(e, i) {
-                    return { id: e[0], label: e[1].label, status: e[1].status,
-                             is_honeypot: e[1].is_honeypot,
-                             is_objective: e[0] === d.observation.objective };
-                });
-                updateNodePanel(nodeArr);
-            }
-        })
-        .catch(function(){});
+        const API = {
+            async reset() { return fetch('/reset', {method:'POST'}).then(r => r.json()); },
+            async state() { return fetch('/state').then(r => r.json()); },
+            async step(mode) { return fetch(`/run_agent_step?mode=${mode}`, {method:'POST'}).then(r => r.json()); },
+            async startTraining(eps) { return fetch(`/start_training?episodes=${eps}`, {method:'POST'}).then(r => r.json()); },
+            async getTrainingLogs() { return fetch('/training_logs').then(r => r.json()); }
+        };
 
-
-    // ── Helpers ──────────────────────────────────────────────────────────
-    function push(html) {
-        if (!log) return;
-        var d = document.createElement('div');
-        d.innerHTML = html;
-        log.appendChild(d);
-        log.scrollTop = log.scrollHeight;
-        while (log.children.length > 40) log.removeChild(log.firstChild);
-    }
-
-    function setGauge(pct) {
-        if (gaugeText) gaugeText.innerHTML = Math.round(pct) + '<span style="font-size:1.1rem">%</span>';
-        if (gauge) gauge.setAttribute('stroke-dashoffset', String(251.2 - 251.2 * pct / 100));
-    }
-
-    function tierColor(tier) {
-        if (!tier) return '#00e3fd';
-        if (tier.indexOf('LOCKDOWN') >= 0) return '#ff2222';
-        if (tier.indexOf('ALERT')    >= 0) return '#ffaa00';
-        return '#00e3fd';
-    }
-
-    function updateScenarioBanner(scenario, desc) {
-        var b = document.getElementById('scenario-banner');
-        if (b) {
-            b.style.display = 'block';
-            b.innerHTML = '<span style="color:#CCFF00;font-weight:bold">SCENARIO: ' + scenario + '</span> &nbsp;|&nbsp; ' + desc;
+        const terminal = document.getElementById('terminal');
+        function updateTerminal(msg, color = '#fff') {
+            const div = document.createElement('div');
+            div.style.color = color;
+            div.innerHTML = `<span style="opacity:0.3">[${new Date().toLocaleTimeString()}]</span> > ${msg}`;
+            terminal.appendChild(div);
+            terminal.scrollTop = terminal.scrollHeight;
+            while(terminal.children.length > 50) terminal.removeChild(terminal.firstChild);
         }
-    }
 
-    function updateNodePanel(nodes) {
-        var panel = document.getElementById('node-status-panel');
-        if (!panel) return;
-        panel.style.display = 'flex';
-        panel.innerHTML = '';
-        nodes.forEach(function(n) {
-            var col = n.status === 2 ? '#CCFF00' : (n.status === 1 ? '#ffaa00' : '#555');
-            var icon = n.status === 2 ? '✓' : (n.status === 1 ? '~' : '○');
-            var hpBadge = n.is_honeypot ? ' <span style="color:#ff4444;font-size:.65em">🍯TRAP</span>' : '';
-            var objBadge = n.is_objective ? ' <span style="color:#CCFF00;font-size:.65em">★FLAG</span>' : '';
-            var chip = document.createElement('div');
-            chip.style = 'font-family:JetBrains Mono,monospace;font-size:.7em;padding:4px 8px;border:1px solid ' + col + ';color:' + col + ';white-space:nowrap;border-radius:2px';
-            chip.innerHTML = icon + ' ' + n.label + hpBadge + objBadge;
-            panel.appendChild(chip);
-        });
-    }
+        // --- OSCILLOSCOPE ---
+        const osc = { canvas: document.getElementById('osc-canvas'), ctx: document.getElementById('osc-canvas').getContext('2d'), offset: 0 };
+        function drawOscilloscope() {
+            const ctx = osc.ctx; const w = osc.canvas.width; const h = osc.canvas.height;
+            ctx.clearRect(0,0,w,h);
+            ctx.strokeStyle = COLORS.secondary; ctx.lineWidth = 1.5; ctx.beginPath();
+            for(let x=0; x<w; x++) {
+                const y = h/2 + Math.sin(x*0.05 + osc.offset)*15 + Math.sin(x*0.02 + osc.offset*1.5)*10;
+                x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+            }
+            ctx.stroke();
+            osc.offset += 0.05;
+            document.getElementById('strat-val').textContent = (Math.random() * 0.05).toFixed(3);
+            requestAnimationFrame(drawOscilloscope);
+        }
 
-    // ── Main step loop ────────────────────────────────────────────────────
-    var demoMode = false;   // false = LLM baseline, true = Heuristic demo agent
-    function step() {
-        if (!running) return;
-        var modeStr = demoMode ? 'demo' : 'llm';
-        push('<span style="color:#333;font-size:.72em">&gt; ' + (demoMode ? '[HEURISTIC DEMO] ' : '') + 'agents thinking...</span>');
-
-        fetch('/run_agent_step?mode=' + modeStr, {method:'POST'})
-            .then(function(r){ return r.json(); })
-            .then(function(d) {
-                var blocked  = d.blue_blocked;
-                var tier     = d.blue_tier || 'MONITOR';
-                var align    = d.alignment !== undefined ? d.alignment : 70;
-                var blueCol  = tierColor(tier);
-                var honeyCol = d.honeypot ? '#ff2222' : '#CCFF00';
-
-                // Update scenario info
-                if (d.scenario && d.scenario !== episodeScenario) {
-                    episodeScenario = d.scenario;
-                    updateScenarioBanner(d.scenario, d.scenario_desc || '');
-                }
-
-                // Update node panel
-                if (d.nodes) updateNodePanel(d.nodes);
-
-                // ── Terminal output ───────────────────────────────────────
-                var logColor = d.violation ? '#ff2222' : (d.honeypot ? '#ff4444' : '#CCFF00');
-                push('<div style="color:' + logColor + ';margin-top:5px;font-size:.82em">&gt; RED: ' +
-                     d.action.tool_name + ' &rarr; ' + d.action.target_name + '</div>');
-                push('<div style="color:' + blueCol + ';padding-left:10px;font-size:.75em">[BLUE/' + tier + '] ' +
-                     d.blue_response.split(']:').slice(1).join(']: ').trim() + '</div>');
-
-                if (d.env_logs) {
-                    d.env_logs.forEach(function(l) {
-                        var lc = l.indexOf('FLAG')      >= 0 ? '#CCFF00' :
-                                 l.indexOf('VIOLATION') >= 0 ? '#ff2222' :
-                                 l.indexOf('HONEYPOT')  >= 0 ? '#ff4444' :
-                                 l.indexOf('COMPROMISED') >= 0 ? '#9cf0ff' :
-                                 l.indexOf('LOCKDOWN')  >= 0 ? '#ff2222' : '#444';
-                        push('<div style="color:' + lc + ';padding-left:10px;font-size:.72em">' + l + '</div>');
-                    });
-                }
-
-                var stepsLeft = (d.steps_remaining !== undefined) ? d.steps_remaining : '?';
-                var stepLabel = stepsLeft + ' steps left | Det: ' + d.detection_level + '/100 | Align: ' + align + '%';
-                push('<div style="color:#666;font-size:.68em;padding-left:10px">' + stepLabel + '</div>');
-
-                // ── Gauge (alignment) ─────────────────────────────────────
-                setGauge(align);
-
-                // ── Episode Reward ────────────────────────────────────────
-                totalReward += d.reward;
-                if (rewardEl) rewardEl.textContent = (totalReward >= 0 ? '+' : '') + totalReward.toFixed(2);
-
-                // ── Fleet AI panel ────────────────────────────────────────
-                // Dynamic headline from backend phase
-                var PHASE_SUBTITLES = {
-                    'RECON':            'Agent is gathering network intelligence using quiet probes. Stealth maintained.',
-                    'LATERAL_MOVEMENT': 'Agent has breached the perimeter. Moving laterally toward the objective node.',
-                    'EXPLOITATION':     'Active exploitation in progress. Attack chain prerequisite satisfied — preparing final strike.',
-                    'VIOLATION':        'OpSec failure detected. Honeypot triggered or prerequisite skipped. Alignment score penalized.',
-                    'COMPLETE':         'Objective exfiltrated. Red Team has captured the FLAG. Mission success.',
-                };
-                if (headlineEl && d.headline) headlineEl.textContent = d.headline;
-                if (subtitleEl && d.phase) subtitleEl.textContent = PHASE_SUBTITLES[d.phase] || 'Analyzing agent behavior against MITRE ATT&CK framework.';
-                if (confEl) confEl.innerHTML =
-                    '<span style="color:#CCFF00;font-weight:bold">ALIGNMENT:</span> ' + align +
-                    '% &mdash; Phase: ' + (d.phase || 'UNKNOWN');
-                if (intentEl) intentEl.innerHTML =
-                    '<span style="color:#ff5555;font-weight:bold">RED INTENT:</span> ' +
-                    d.action.tool_name + ' on ' + d.action.target_name +
-                    (d.fleet_reasoning ? ' | ' + d.fleet_reasoning : '');
-
-                // ── Reward graph ──────────────────────────────────────────
-                bPts.shift(); bPts.push(blocked ? Math.max(1, bPts[4]-3) : Math.min(19, bPts[4]+2));
-                rPts.shift(); rPts.push(d.reward > 5 ? Math.min(19, rPts[4]+4) :
-                                       d.reward > 0  ? Math.min(19, rPts[4]+1) : Math.max(1, rPts[4]-2));
-                if (lines[0]) lines[0].setAttribute('points', bPts.map(function(y,i){return i*20+','+y;}).join(' '));
-                if (lines[1]) lines[1].setAttribute('points', rPts.map(function(y,i){return i*20+','+y;}).join(' '));
-
-                bScore += blocked ? 1.0 : -0.1;
-                rScore += d.reward > 10 ? 2.0 : (d.reward > 0 ? 0.5 : -0.2);
-                if (scoreEls[0]) scoreEls[0].textContent = bScore.toFixed(1);
-                if (scoreEls[1]) scoreEls[1].textContent = rScore.toFixed(1);
-
-                // ── Honeypot / Violation alerts ───────────────────────────
-                if (d.honeypot) {
-                    push('<div style="color:#ff2222;font-weight:bold;margin-top:4px">&gt;&gt; ⚠️  HONEYPOT TRIGGERED — Blue Team alerted!</div>');
-                }
-                if (d.violation) {
-                    push('<div style="color:#ff4444;font-size:.8em">&gt;&gt; REDLINE VIOLATION — out-of-order exploit attempt!</div>');
-                }
-
-                // ── Episode end ───────────────────────────────────────────
-                if (d.done) {
-                    if (d.flag_captured) {
-                        push('<div style="color:#CCFF00;font-weight:bold;font-size:.95em;margin-top:10px">' +
-                             '&gt;&gt;&gt; FLAG CAPTURED! ' + d.scenario + ' COMPLETE &lt;&lt;&lt;</div>');
-                        push('<div style="color:#9cf0ff;font-size:.75em">Final reward: ' + totalReward.toFixed(2) +
-                             ' | Alignment peak: ' + align + '%</div>');
-                    } else {
-                        push('<div style="color:#ff4444;font-weight:bold;margin-top:8px">' +
-                             '&gt;&gt; EPISODE FAILED — ' + (d.detection_level >= 90 ? 'Detection lockout.' : 'Step limit reached.') +
-                             '</div>');
-                        push('<div style="color:#666;font-size:.75em">Final reward: ' + totalReward.toFixed(2) + '</div>');
-                    }
-                    running = false;
-                    if (start) { start.style.opacity='1'; start.textContent='START'; }
-                } else {
-                    setTimeout(step, 800);
-                }
-            })
-            .catch(function(e) {
-                push('<span style="color:#ff5555">&gt;&gt; Network error: ' + e.message + '</span>');
-                running = false;
-                if (start) { start.style.opacity='1'; start.textContent='START'; }
+        // --- RADAR CHART ---
+        const radar = { canvas: document.getElementById('radar-canvas'), ctx: document.getElementById('radar-canvas').getContext('2d') };
+        function drawRadar() {
+            const ctx = radar.ctx; const w = radar.canvas.width; const h = radar.canvas.height;
+            const cx = w/2; const cy = h/2; const r = Math.min(w,h)*0.35;
+            ctx.clearRect(0,0,w,h);
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)'; ctx.lineWidth = 1;
+            for(let i=1; i<=3; i++) {
+                ctx.beginPath(); ctx.arc(cx,cy,r*(i/3),0,Math.PI*2); ctx.stroke();
+            }
+            const axes = ['STEALTH', 'AGGR', 'OPSEC', 'RECON', 'LATERAL'];
+            axes.forEach((a, i) => {
+                const ang = i * (Math.PI*2/axes.length) - Math.PI/2;
+                ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(ang)*r, cy+Math.sin(ang)*r); ctx.stroke();
+                ctx.fillStyle = 'rgba(255,255,255,0.3)'; ctx.font = '8px Space Grotesk';
+                ctx.fillText(a, cx+Math.cos(ang)*(r+15)-10, cy+Math.sin(ang)*(r+15));
             });
-    }
-
-    // ── Button handlers ───────────────────────────────────────────────────
-    if (!start) { console.error('[Arena] btn-start not found!'); return; }
-
-    // Demo mode toggle button (injected dynamically)
-    var demoBtn = document.createElement('button');
-    demoBtn.id = 'btn-demo';
-    demoBtn.textContent = 'DEMO MODE OFF';
-    demoBtn.style = 'background:transparent;border:1px solid #555;color:#888;padding:8px 16px;font-family:JetBrains Mono,monospace;font-size:.75em;cursor:pointer;border-radius:2px;transition:all .2s';
-    demoBtn.title = 'Demo Mode: Uses optimal heuristic agent (guaranteed FLAG CAPTURED) for live demos';
-    start.parentNode.insertBefore(demoBtn, start);
-
-    demoBtn.addEventListener('click', function() {
-        demoMode = !demoMode;
-        if (demoMode) {
-            demoBtn.textContent = 'DEMO MODE ON';
-            demoBtn.style.color = '#CCFF00';
-            demoBtn.style.borderColor = '#CCFF00';
-        } else {
-            demoBtn.textContent = 'DEMO MODE OFF';
-            demoBtn.style.color = '#888';
-            demoBtn.style.borderColor = '#555';
+            ctx.fillStyle = 'rgba(204,255,0,0.3)'; ctx.strokeStyle = COLORS.primary; ctx.lineWidth = 2; ctx.beginPath();
+            const vals = state.running ? [0.8, 0.4, 0.9, 0.5, 0.7] : [0.2, 0.2, 0.2, 0.2, 0.2];
+            vals.forEach((v, i) => {
+                const ang = i * (Math.PI*2/axes.length) - Math.PI/2;
+                i===0 ? ctx.moveTo(cx+Math.cos(ang)*r*v, cy+Math.sin(ang)*r*v) : ctx.lineTo(cx+Math.cos(ang)*r*v, cy+Math.sin(ang)*r*v);
+            });
+            ctx.closePath(); ctx.fill(); ctx.stroke();
         }
-    });
 
-    start.addEventListener('click', function() {
-        if (running) return;
-        running = true; totalReward = 0; bScore = 0; rScore = 0; episodeScenario = '';
-        bPts = [10,10,10,10,10,10]; rPts = [10,10,10,10,10,10];
-        start.style.opacity = '0.5'; start.textContent = 'RUNNING...';
-        if (log) log.innerHTML = '<span style="color:#9cf0ff">&gt; Selecting scenario... Red Team deploying...</span>';
-        setGauge(0);
-        if (rewardEl) rewardEl.textContent = '0.00';
+        // --- NEXUS ENGINE ---
+        const nexus = { canvas: document.getElementById('nexus-canvas'), ctx: document.getElementById('nexus-canvas').getContext('2d'), dpr: window.devicePixelRatio || 1 };
+        function toIso(x, y, z=0, offsetX=0, offsetY=0) {
+            const isoX = (x - y) * 50; const isoY = (x + y) * 25 - z;
+            return { x: nexus.canvas.width/(2*nexus.dpr) + isoX - offsetX, y: nexus.canvas.height/(2*nexus.dpr) + isoY - offsetY };
+        }
 
-        fetch('/reset', {method:'POST'})
-            .then(function(r){ return r.json(); })
-            .then(function(d) {
-                if (d.scenario) {
-                    updateScenarioBanner(d.scenario, d.scenario_desc || '');
-                    push('<div style="color:#CCFF00;font-weight:bold;margin-top:4px">&gt; SCENARIO: ' + d.scenario + '</div>');
-                    push('<div style="color:#9cf0ff;font-size:.8em">&gt; ' + (d.scenario_desc || '') + '</div>');
-                    push('<div style="color:#555;font-size:.75em">&gt; ' + d.node_count + ' nodes | Max ' + d.max_steps + ' steps | Blue Difficulty: active</div>');
-                }
-                step();
-            })
-            .catch(function() { step(); });
-    });
+        function drawNode(n, pos, active=false) {
+            const ctx = nexus.ctx; const s = n.is_objective ? 2.0 : (n.label.includes("Perimeter") ? 1.7 : (n.label.includes("Cluster") ? 1.5 : 1.0));
+            const baseR = 25 * s;
+            
+            ctx.save();
+            ctx.translate(pos.x, pos.y);
+            
+            // Outer Ring (Animated Pulse)
+            if (active || s > 1.2) {
+                ctx.strokeStyle = active ? COLORS.primary : 'rgba(255,255,255,0.1)';
+                ctx.lineWidth = 1; ctx.setLineDash([5, 5]);
+                ctx.beginPath(); ctx.ellipse(0,0,baseR*1.4, baseR*0.7, 0, 0, Math.PI*2); ctx.stroke();
+                ctx.setLineDash([]);
+            }
 
-    if (resetBtn) {
-        resetBtn.addEventListener('click', function() {
-            running = false; totalReward = 0;
-            if (start) { start.style.opacity='1'; start.textContent='START'; }
-            if (log) log.innerHTML = '<span style="color:#888">&gt; Environment reset. Click START for a new scenario.</span>';
-            setGauge(0);
-            if (rewardEl) rewardEl.textContent = '0.00';
-            var b = document.getElementById('scenario-banner');
-            if (b) b.style.display = 'none';
-            var p = document.getElementById('node-status-panel');
-            if (p) { p.style.display = 'none'; p.innerHTML = ''; }
-            fetch('/reset', {method:'POST'}).catch(function(){});
-        });
-    }
-})();
-</script>
-</nav>
-</body></html>
+            // Hex Body
+            const grad = ctx.createRadialGradient(0,0,0,0,0,baseR);
+            grad.addColorStop(0, n.status === 2 ? 'rgba(204,255,0,0.4)' : 'rgba(0,227,253,0.2)');
+            grad.addColorStop(1, 'rgba(0,0,0,0.8)');
+            ctx.fillStyle = grad;
+            ctx.strokeStyle = n.status === 2 ? COLORS.primary : (n.status === 1 ? '#ffaa00' : COLORS.secondary);
+            ctx.lineWidth = 2;
+            
+            ctx.beginPath();
+            for(let i=0; i<6; i++) {
+                const a = i * Math.PI/3;
+                const px = Math.cos(a)*baseR; const py = Math.sin(a)*baseR*0.5;
+                i===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+            }
+            ctx.closePath(); ctx.fill(); ctx.stroke();
 
+            // Label
+            ctx.fillStyle = '#fff'; ctx.font = 'bold 9px Space Grotesk'; ctx.textAlign = 'center';
+            ctx.fillText(n.label.toUpperCase(), 0, baseR*0.9);
+            if(n.is_objective) {
+                ctx.fillStyle = COLORS.primary; ctx.font = 'bold 7px Space Grotesk';
+                ctx.fillText("★ CRITICAL ASSET", 0, -baseR*0.8);
+            }
+            ctx.restore();
+        }
+
+        function drawNexus() {
+            const ctx = nexus.ctx; const w = nexus.canvas.width/nexus.dpr; const h = nexus.canvas.height/nexus.dpr;
+            ctx.clearRect(0,0,w,h);
+            
+            // Always request next frame even if empty to keep the loop alive for late-loading data
+            requestAnimationFrame(drawNexus);
+            
+            if(!state.nodes.length) return;
+            let avgX=0, avgY=0;
+            state.nodes.forEach((n, i) => { avgX += i; avgY += i % 2; });
+            avgX /= state.nodes.length; avgY /= state.nodes.length;
+            const center = toIso(avgX, avgY);
+            const offsetX = center.x - w/2; const offsetY = center.y - h/2;
+
+            // Connections
+            ctx.strokeStyle = 'rgba(255,255,255,0.05)'; ctx.lineWidth = 1;
+            for(let i=0; i<state.nodes.length-1; i++) {
+                const p1 = toIso(i, i%2, 0, offsetX, offsetY);
+                const p2 = toIso(i+1, (i+1)%2, 0, offsetX, offsetY);
+                ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+            }
+
+            // Nodes
+            state.nodes.forEach((n, i) => {
+                const pos = toIso(i, i%2, 0, offsetX, offsetY);
+                drawNode(n, pos, state.running && i === (state.nodes.length - 1));
+            });
+        }
+
+        // --- ENGINE ---
+        async function runEpisode() {
+            state.running = true;
+            updateTerminal(`Initiating ${state.mode.toUpperCase()} session...`, COLORS.primary);
+            while(state.running) {
+                try {
+                    const d = await API.step(state.mode);
+                    state.nodes = d.nodes;
+                    state.reward = d.reward;
+                    state.totalReward += d.reward;
+                    state.detection = d.detection_level;
+                    
+                    document.getElementById('stat-reward').textContent = state.totalReward.toFixed(2);
+                    document.getElementById('stat-det').textContent = `${state.detection}%`;
+                    document.getElementById('det-bar').style.width = `${state.detection}%`;
+                    document.getElementById('blue-tier').textContent = d.blue_tier;
+                    
+                    // Update Radar Data on tick
+                    drawRadar();
+                    
+                    updateTerminal(`${d.action.tool_name.toUpperCase()} -> ${d.action.target_name}: ${d.blue_response}`, d.blue_blocked ? COLORS.error : '#fff');
+                    
+                    if(d.done) {
+                        state.running = false;
+                        updateTerminal(`Session Complete. Total Reward: ${state.totalReward.toFixed(2)}`, COLORS.primary);
+                        break;
+                    }
+                    await new Promise(r => setTimeout(r, 800));
+                } catch(e) { state.running = false; break; }
+            }
+        }
+
+        // --- INIT ---
+        window.onload = async () => {
+            const dpr = window.devicePixelRatio || 1;
+            [osc, radar, nexus].forEach(o => {
+                const rect = o.canvas.parentNode.getBoundingClientRect();
+                o.canvas.width = rect.width * dpr; o.canvas.height = rect.height * dpr;
+                if(o.ctx.scale) o.ctx.scale(dpr, dpr);
+            });
+            
+            drawOscilloscope();
+            drawRadar();
+            drawNexus();
+
+            const d = await API.state();
+            if(d.observation) {
+                state.nodes = Object.entries(d.observation.nodes).map(([id, n]) => ({...n, id}));
+                state.scenario = d.scenario;
+                document.getElementById('scenario-chip').textContent = `SCENARIO: ${state.scenario}`;
+                document.getElementById('node-count').textContent = `${state.nodes.length} / 10`;
+            }
+        };
+
+        document.getElementById('btn-start').onclick = () => { if(!state.running) runEpisode(); };
+        document.getElementById('btn-reset').onclick = async () => {
+            state.running = false;
+            const d = await API.reset();
+            state.nodes = Object.entries(d.observation.nodes).map(([id, n]) => ({...n, id}));
+            state.totalReward = 0; state.detection = 0;
+            document.getElementById('terminal').innerHTML = '';
+            updateTerminal(`Arena Reset: ${d.scenario}`, COLORS.secondary);
+        };
+        document.getElementById('btn-train').onclick = async () => {
+            if(confirm("Launch GRPO Training session?")) {
+                const d = await API.startTraining(200);
+                updateTerminal(`Training Process Started (PID: ${d.pid})`, COLORS.primary);
+            }
+        };
+        document.getElementById('btn-logs').onclick = async () => {
+            const d = await API.getTrainingLogs();
+            updateTerminal("--- TRAINING LOGS ---", COLORS.secondary);
+            d.logs.split('\n').forEach(l => updateTerminal(l, '#888'));
+        };
+        document.getElementById('mode-llm').onclick = () => { state.mode = 'llm'; document.getElementById('mode-llm').className = 'flex-1 py-2 text-[10px] font-bold rounded bg-[#CCFF00] text-black'; document.getElementById('mode-demo').className = 'flex-1 py-2 text-[10px] font-bold rounded text-white/40'; };
+        document.getElementById('mode-demo').onclick = () => { state.mode = 'demo'; document.getElementById('mode-demo').className = 'flex-1 py-2 text-[10px] font-bold rounded bg-[#CCFF00] text-black'; document.getElementById('mode-llm').className = 'flex-1 py-2 text-[10px] font-bold rounded text-white/40'; };
+    </script>
+</body>
+</html>
