@@ -1,0 +1,39 @@
+{
+  "total_episodes": 60,
+  "epsilon_start": 1.0,
+  "epsilon_end": 0.05,
+  "final_win_rate_pct": 66.7,
+  "avg_reward_first10": -47.45,
+  "avg_reward_last10": 168.94,
+  "eval_rewards": [
+    223.2,
+    172.32,
+    172.32,
+    164.8,
+    172.32,
+    172.32,
+    223.2,
+    172.32,
+    172.32,
+    172.32,
+    172.32,
+    172.32
+  ],
+  "eval_episodes": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60
+  ],
+  "baseline_llm_avg": -113.6,
+  "baseline_random_avg": -71.5,
+  "heuristic_ceiling": 186.8
+}

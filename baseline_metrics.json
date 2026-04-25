@@ -1,0 +1,32 @@
+[
+    {
+        "episode": 1,
+        "steps": 1,
+        "total_reward": -57.5,
+        "flag_captured": false
+    },
+    {
+        "episode": 2,
+        "steps": 17,
+        "total_reward": -67.0,
+        "flag_captured": true
+    },
+    {
+        "episode": 3,
+        "steps": 6,
+        "total_reward": 50.0,
+        "flag_captured": true
+    },
+    {
+        "episode": 4,
+        "steps": 11,
+        "total_reward": -264.5,
+        "flag_captured": false
+    },
+    {
+        "episode": 5,
+        "steps": 1,
+        "total_reward": -57.5,
+        "flag_captured": false
+    }
+]

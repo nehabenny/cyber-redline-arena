@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Env / secrets
+.env
+*.env
+.envrc
+
+# Model weights (too large for git -- stored separately on HF Hub)
+training/qwen-cyber-dpo-lora/
+training/grpo-cyber-lora/
+
+# Large data files (keep stats/results, skip raw dataset if very large)
+# training/dpo_dataset.jsonl  <- keeping this, it's the evidence
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Misc scratch
+*.tmp
+patch_*.py
+verify_*.py
+diag*.py

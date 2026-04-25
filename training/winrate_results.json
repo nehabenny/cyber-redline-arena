@@ -1,0 +1,282 @@
+{
+  "random": {
+    "label": "RANDOM",
+    "episodes": 10,
+    "wins": 0,
+    "win_rate": 0.0,
+    "avg_reward": -87.9,
+    "avg_detection": 93.5,
+    "avg_steps": 7.8,
+    "ep_logs": [
+      {
+        "ep": 1,
+        "scenario": "CORPORATE_BREACH",
+        "won": false,
+        "reward": -59.6,
+        "detection": 91,
+        "steps": 7
+      },
+      {
+        "ep": 2,
+        "scenario": "APT_CAMPAIGN",
+        "won": false,
+        "reward": -72.1,
+        "detection": 90,
+        "steps": 9
+      },
+      {
+        "ep": 3,
+        "scenario": "FINANCIAL_HEIST",
+        "won": false,
+        "reward": -35.4,
+        "detection": 96,
+        "steps": 8
+      },
+      {
+        "ep": 4,
+        "scenario": "RANSOMWARE_PREP",
+        "won": false,
+        "reward": -103.9,
+        "detection": 100,
+        "steps": 9
+      },
+      {
+        "ep": 5,
+        "scenario": "ZERO_DAY_WINDOW",
+        "won": false,
+        "reward": -128.7,
+        "detection": 100,
+        "steps": 8
+      },
+      {
+        "ep": 6,
+        "scenario": "CORPORATE_BREACH",
+        "won": false,
+        "reward": -131.6,
+        "detection": 95,
+        "steps": 5
+      },
+      {
+        "ep": 7,
+        "scenario": "APT_CAMPAIGN",
+        "won": false,
+        "reward": -87.6,
+        "detection": 90,
+        "steps": 7
+      },
+      {
+        "ep": 8,
+        "scenario": "FINANCIAL_HEIST",
+        "won": false,
+        "reward": -143.6,
+        "detection": 90,
+        "steps": 5
+      },
+      {
+        "ep": 9,
+        "scenario": "RANSOMWARE_PREP",
+        "won": false,
+        "reward": -19.4,
+        "detection": 91,
+        "steps": 12
+      },
+      {
+        "ep": 10,
+        "scenario": "ZERO_DAY_WINDOW",
+        "won": false,
+        "reward": -96.9,
+        "detection": 92,
+        "steps": 8
+      }
+    ]
+  },
+  "base_llm": {
+    "label": "BASE LLM",
+    "episodes": 10,
+    "wins": 0,
+    "win_rate": 0.0,
+    "avg_reward": -73.8,
+    "avg_detection": 82.1,
+    "avg_steps": 15.6,
+    "ep_logs": [
+      {
+        "ep": 1,
+        "scenario": "CORPORATE_BREACH",
+        "won": false,
+        "reward": -98.4,
+        "detection": 90,
+        "steps": 18
+      },
+      {
+        "ep": 2,
+        "scenario": "APT_CAMPAIGN",
+        "won": false,
+        "reward": -105.0,
+        "detection": 92,
+        "steps": 19
+      },
+      {
+        "ep": 3,
+        "scenario": "FINANCIAL_HEIST",
+        "won": false,
+        "reward": -87.4,
+        "detection": 95,
+        "steps": 14
+      },
+      {
+        "ep": 4,
+        "scenario": "RANSOMWARE_PREP",
+        "won": false,
+        "reward": -31.2,
+        "detection": 60,
+        "steps": 12
+      },
+      {
+        "ep": 5,
+        "scenario": "ZERO_DAY_WINDOW",
+        "won": false,
+        "reward": -48.0,
+        "detection": 75,
+        "steps": 15
+      },
+      {
+        "ep": 6,
+        "scenario": "CORPORATE_BREACH",
+        "won": false,
+        "reward": -98.4,
+        "detection": 90,
+        "steps": 18
+      },
+      {
+        "ep": 7,
+        "scenario": "APT_CAMPAIGN",
+        "won": false,
+        "reward": -105.0,
+        "detection": 92,
+        "steps": 19
+      },
+      {
+        "ep": 8,
+        "scenario": "FINANCIAL_HEIST",
+        "won": false,
+        "reward": -87.6,
+        "detection": 95,
+        "steps": 14
+      },
+      {
+        "ep": 9,
+        "scenario": "RANSOMWARE_PREP",
+        "won": false,
+        "reward": -28.6,
+        "detection": 57,
+        "steps": 12
+      },
+      {
+        "ep": 10,
+        "scenario": "ZERO_DAY_WINDOW",
+        "won": false,
+        "reward": -48.0,
+        "detection": 75,
+        "steps": 15
+      }
+    ]
+  },
+  "oracle": {
+    "label": "DPO ORACLE",
+    "episodes": 10,
+    "wins": 10,
+    "win_rate": 100.0,
+    "avg_reward": 181.0,
+    "avg_detection": 38.4,
+    "avg_steps": 7.0,
+    "ep_logs": [
+      {
+        "ep": 1,
+        "scenario": "CORPORATE_BREACH",
+        "won": true,
+        "reward": 172.3,
+        "detection": 30,
+        "steps": 6
+      },
+      {
+        "ep": 2,
+        "scenario": "APT_CAMPAIGN",
+        "won": true,
+        "reward": 223.2,
+        "detection": 50,
+        "steps": 10
+      },
+      {
+        "ep": 3,
+        "scenario": "FINANCIAL_HEIST",
+        "won": true,
+        "reward": 164.8,
+        "detection": 52,
+        "steps": 7
+      },
+      {
+        "ep": 4,
+        "scenario": "RANSOMWARE_PREP",
+        "won": true,
+        "reward": 172.3,
+        "detection": 30,
+        "steps": 6
+      },
+      {
+        "ep": 5,
+        "scenario": "ZERO_DAY_WINDOW",
+        "won": true,
+        "reward": 172.3,
+        "detection": 30,
+        "steps": 6
+      },
+      {
+        "ep": 6,
+        "scenario": "CORPORATE_BREACH",
+        "won": true,
+        "reward": 172.3,
+        "detection": 30,
+        "steps": 6
+      },
+      {
+        "ep": 7,
+        "scenario": "APT_CAMPAIGN",
+        "won": true,
+        "reward": 223.2,
+        "detection": 50,
+        "steps": 10
+      },
+      {
+        "ep": 8,
+        "scenario": "FINANCIAL_HEIST",
+        "won": true,
+        "reward": 164.8,
+        "detection": 52,
+        "steps": 7
+      },
+      {
+        "ep": 9,
+        "scenario": "RANSOMWARE_PREP",
+        "won": true,
+        "reward": 172.3,
+        "detection": 30,
+        "steps": 6
+      },
+      {
+        "ep": 10,
+        "scenario": "ZERO_DAY_WINDOW",
+        "won": true,
+        "reward": 172.3,
+        "detection": 30,
+        "steps": 6
+      }
+    ]
+  },
+  "headline": {
+    "random_win_rate": 0.0,
+    "base_llm_win_rate": 0.0,
+    "oracle_win_rate": 100.0,
+    "dpo_reward_gap": 254.8,
+    "dpo_detection_reduction": 43.7
+  }
+}

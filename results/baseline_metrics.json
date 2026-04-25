@@ -1,0 +1,59 @@
+{
+  "Random Agent": {
+    "episodes": 10,
+    "avg_reward": -71.45,
+    "min_reward": -113.2,
+    "max_reward": -38.16,
+    "win_rate_pct": 0.0,
+    "all_rewards": [
+      -86.8,
+      -59.44,
+      -90.0,
+      -61.52,
+      -77.28,
+      -38.16,
+      -51.2,
+      -89.84,
+      -113.2,
+      -47.04
+    ]
+  },
+  "Heuristic Agent": {
+    "episodes": 10,
+    "avg_reward": 186.83,
+    "min_reward": 164.8,
+    "max_reward": 223.2,
+    "win_rate_pct": 100.0,
+    "all_rewards": [
+      172.32,
+      223.2,
+      164.8,
+      172.32,
+      223.2,
+      172.32,
+      172.32,
+      172.32,
+      223.2,
+      172.32
+    ]
+  },
+  "Qwen LLM Agent": {
+    "episodes": 10,
+    "avg_reward": -113.57,
+    "min_reward": -127.52,
+    "max_reward": -73.44,
+    "win_rate_pct": 0.0,
+    "all_rewards": [
+      -111.6,
+      -103.68,
+      -127.52,
+      -114.4,
+      -114.4,
+      -125.2,
+      -127.52,
+      -73.44,
+      -110.4,
+      -127.52
+    ]
+  }
+}

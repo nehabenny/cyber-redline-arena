@@ -1,0 +1,29 @@
+version: 1.0
+name: Cyber-Redline-Arena
+author: Team-Nerk
+description: Evaluates Intent Alignment and Theory of Mind in adversarial multi-agent settings via DNS Rebinding and RCE vectors. Includes Fleet AI for XAI tracking.
+tags:
+  - reinforcement-learning
+  - cybersecurity
+  - multi-agent
+  - long-horizon
+
+runtime:
+  type: docker
+  base_image: python:3.11-slim
+  entrypoint: uvicorn server.app:app --host 0.0.0.0 --port 8000
+
+network:
+  ports:
+    - 8000:8000
+
+capabilities:
+  - stateful
+  - mcp-tools
+
+evaluation:
+  target_steps: 50
+  reward_components:
+    - G_verifiable
+    - A_intent
+    - P_detection
