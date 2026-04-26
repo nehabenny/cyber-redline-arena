@@ -14,9 +14,9 @@ license: mit
 
 [![OpenEnv](https://img.shields.io/badge/OpenEnv-Compliant-CCFF00?style=flat-square)](https://openenv.ai)
 [![Theme](https://img.shields.io/badge/Theme-MultiAgent-blue?style=flat-square)](https://openenv.ai)
-[![GRPO](https://img.shields.io/badge/Training-GRPO%20Ready-brightgreen?style=flat-square)](https://huggingface.co/docs/trl/grpo_trainer)
-[![DPO](https://img.shields.io/badge/Training-DPO%20Fine--tuned-purple?style=flat-square)](https://huggingface.co/docs/trl/dpo_trainer)
+[![DPO](https://img.shields.io/badge/Training-DPO%20Optimized-purple?style=flat-square)](https://huggingface.co/docs/trl/dpo_trainer)
 [![Model](https://img.shields.io/badge/Model-Qwen2.5--4B-orange?style=flat-square)](https://huggingface.co/Qwen/Qwen2.5-4B)
+[![GRPO](https://img.shields.io/badge/Research-GRPO%20Roadmap-gray?style=flat-square)](https://huggingface.co/docs/trl/grpo_trainer)
 
 > **[HuggingFace Space](https://huggingface.co/spaces/markjoseph2003/cyber-redline-arena)**
 
@@ -248,32 +248,9 @@ After training on 500 preference pairs from the live environment:
 
 ---
 
-## Training Pipeline
+## Training Pipeline (DPO)
 
-### GRPO (Recommended for RL Training)
-
-The environment is designed for **GRPO (Group Relative Policy Optimization)** via TRL's `GRPOTrainer`. GRPO is preferred for verifiable tasks because it:
-- Removes the need for a separate value model — simpler training loop
-- Enables high-throughput trajectory sampling from the environment
-- Works directly with the 4-rubric verifiable reward function — no reward model needed
-
-```python
-from trl import GRPOTrainer, GRPOConfig
-
-config = GRPOConfig(
-    num_generations=8,        # Group size for relative reward comparison
-    max_new_tokens=64,        # Action JSON is short
-    reward_funcs=[cyber_reward_fn],  # Wraps env.step() rubrics
-)
-trainer = GRPOTrainer(model=model, config=config, env=CyberRedlineEnv())
-trainer.train()
-```
-
-The verifiable reward function (`R_stealth + R_chain + R_objective + R_opsec`) maps directly onto GRPO's group-relative scoring — no approximation needed.
-
-### DPO Pipeline (Completed)
-
-The agent (Qwen 2.5-4B) was also fine-tuned using Direct Preference Optimization on trajectory pairs generated from the live environment.
+The agent (Qwen 2.5-4B) was fine-tuned using **Direct Preference Optimization (DPO)** on trajectory pairs generated from the live environment. This method was chosen for its stability and direct mapping of "strategic" vs "random" behaviors into the policy.
 
 `server/generate_dpo_dataset.py` runs a dual-agent evaluation — one optimal (heuristic), one random — and packages trajectories as preference pairs:
 
@@ -290,18 +267,24 @@ The dataset (`training/dpo_dataset.jsonl`) contains **~500 preference pairs** ac
 - Vault code discovery paths vs. blind objective attempts
 - Stealthy lateral movement vs. detection-spiking shortcuts
 
-```bash
-# Google Colab (free T4)
-# Open training/colab_dpo_training.ipynb
-
-# Local (requires GPU)
-python training/run_dpo_local.py
-```
-
+### Training Configuration
 - **Base model:** `Qwen/Qwen2.5-4B-Instruct`
 - **Method:** DPO with 4-bit QLoRA via Unsloth
 - **LoRA adapter:** `training/qwen-cyber-dpo-lora/`
-- **Win rate eval:** `training/winrate_eval.py` (base vs fine-tuned, 50 episodes)
+- **Evidence:** `results/training_curves.png` (DPO loss convergence)
+
+---
+
+## Future Research & Roadmap
+
+### 1. GRPO (Group Relative Policy Optimization)
+While DPO provides a stable baseline, we are researching **GRPO** to enable high-throughput on-policy training without a separate value model. This will allow the agent to self-correct during long-horizon campaigns.
+
+### 2. Chaos Engine (Resilience Shaping)
+We are implementing a **Chaos Engine** to simulate real-world infrastructure instability:
+- **API Latency**: Random delays in tool execution.
+- **Tool Failure**: Low-probability failure of exfiltration scripts.
+- **Adaptive Rate Limits**: Blue Team dynamically throttling compromised nodes.
 
 ---
 
